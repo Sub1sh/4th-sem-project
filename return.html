@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Book Form</title>
+    <link rel="stylesheet" href="return.css">
+</head>
+<body>
+    <div class="container">
+        <form class="return-form">
+            <h2>Return a Book</h2>
+            <label for="bookId">Book ID:</label>
+            <input type="text" id="bookId" name="bookId" required>
+
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" required>
+
+            <label for="returnDate">Return Date:</label>
+            <input type="date" id="returnDate" name="returnDate" required>
+
+            <label for="condition">Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+                <option value="Poor">Poor</option>
+            </select>
+
+            <button type="submit">Return Book</button>
+        </form>
+    </div>
+</body>
+</html>
