@@ -18,34 +18,33 @@ body, html {
     background-repeat: no-repeat;
 }
 
+/* Sidebar Styles */
 .sidebar {
     width: 60px;
     background-color: #2c3e50;
     transition: width 0.3s;
+    overflow: hidden;
 }
 
 .sidebar:hover {
     width: 250px;
 }
 
-.open-btn {
-    background-color: #34495e;
-    color: #ecf0f1;
-    border: none;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    cursor: pointer;
+/* Hide nav-text initially */
+.nav-text {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-    height: 100vh;
+/* Show nav-text on hover */
+.sidebar:hover .nav-text {
+    display: inline;
+    opacity: 1;
+    margin-left: 10px;
 }
 
+/* Styling for the icons to remain visible */
 .nav a {
     color: #ecf0f1;
     text-decoration: none;
@@ -58,9 +57,10 @@ body, html {
 }
 
 .nav a i {
-    margin-right: 10px;
+    font-size: 24px;
 }
 
+/* Hover effect for background color */
 .nav a:hover {
     background-color: #1abc9c;
 }
@@ -78,13 +78,10 @@ body, html {
     padding: 12px 16px;
 }
 
-.dropdown-menu li a {
-    color: #ecf0f1;
-}
-
 li:hover .dropdown-menu {
     display: block;
 }
+
 
 .content {
     flex: 1;
