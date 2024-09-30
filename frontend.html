@@ -5,7 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Management Dashboard</title>
     <link rel="stylesheet" href="frontend.css">
-    
+    <script>// Function to toggle the sidebar navigation
+        function toggleNav() {
+            var navMenu = document.getElementById("navMenu");
+            navMenu.classList.toggle("open");
+        }
+        
+        // Function to open the settings panel
+        function openSettings() {
+            document.getElementById("settingsPanel").style.display = "block";
+        }
+        
+        // Function to close the settings panel
+        function closeSettings() {
+            document.getElementById("settingsPanel").style.display = "none";
+        }
+        
+        // Function to set the selected theme
+        function setTheme(theme) {
+            document.body.className = theme + '-theme';
+            alert('Theme set to: ' + theme);
+        }
+        
+        // Function to toggle notifications
+        function toggleNotifications(isEnabled) {
+            if (isEnabled) {
+                alert('Notifications enabled');
+            } else {
+                alert('Notifications disabled');
+            }
+        }
+        
+        // Function to change the language (example only, does not actually translate the page)
+        function changeLanguage(language) {
+            alert('Language set to: ' + language);
+        }
+        
+        // Function to set profile visibility
+        function setProfileVisibility(visibility) {
+            alert('Profile visibility set to: ' + visibility);
+        }
+        </script>
 </head>
 <body>
     
@@ -19,30 +59,13 @@
                     <li><a href="add.html" class="btn"><i class="fas fa-plus-circle"></i> <span class="nav-text">Add Book</span></a></li>
                     <li><a href="issue.html" class="btn"><i class="fas fa-book-reader"></i> <span class="nav-text">Issued Books</span></a></li>
                     <li><a href="return.html" class="btn"><i class="fas fa-undo-alt"></i> <span class="nav-text">Returned Books</span></a></li>
-                    <li class="dropdown">
-                        <a href="setting.html" class="btn"><i class="fas fa-cog"></i> <span class="nav-text">Settings <i class="fas fa-chevron-down"></i></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="theme"><i class="fas fa-palette"></i> Theme</a></li>
-                            <li><a href="notifications"><i class="fas fa-bell"></i> Notifications</a></li>
-                            <li><a href="language"><i class="fas fa-language"></i> Language</a></li>
-                            <li><a href="profile-visibility"><i class="fas fa-eye-slash"></i> Profile Visibility</a></li>
-                            <li><a href="help"><i class="fas fa-question-circle"></i> Help</a></li>
-                            <li><a href="privacy"><i class="fas fa-user-secret"></i> Privacy</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="javascript:void(0)" onclick="openSettings()" class="btn"><i class="fas fa-cog"></i> <span class="nav-text">Settings</span></a></li>
                 </ul>
             </div>
         </div>
 
         <div class="content">
-            
-            <h2 class="center-heading">DETAILS OF BOOKS 
-                
-                <form action="/search" method="GET" class="search-form">
-                    <input type="text" placeholder="Search..." name="query" class="search-input">
-                    <button type="submit" class="search-button">Search</button>
-                </form>
-            </h2>
+            <h2 class="center-heading">DETAILS OF BOOKS</h2>
             <main class="main-content">
                 <section class="stats">
                     <div class="stat-card">
@@ -62,10 +85,9 @@
                         <p>50</p>
                     </div>
                 </section>
-
                 <section class="recent-books">
                     <h2>Recently Added Books</h2>
-                    <ol type="1" class="list">
+                    <ol class="list">
                         <li>"The Great Gatsby" by F. Scott Fitzgerald</li><br>
                         <li>"To Kill a Mockingbird" by Harper Lee</li><br>
                         <li>"1984" by George Orwell</li><br>
@@ -79,50 +101,52 @@
         </div>
     </div>
 
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <p>Our library management system helps you find, borrow, and return books efficiently. We are committed to providing a seamless reading experience.</p>
-            </div>
+    <div id="settingsPanel" class="settings-panel">
+        <h2>Settings</h2>
 
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="home">Home</a></li>
-                    <li><a href="catalog">Catalog</a></li>
-                    <li><a href="contact">Contact Us</a></li>
-                    <li><a href="faqs">FAQs</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: <a href="info@librarysystem.com">info@librarysystem.com</a></p>
-                <p>Phone: 98625478</p>
-                <p>Address: Bhaktapur-Nepal</p>
-            </div>
-
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <ul class="social-media">
-                    <li><a href="Facebook.com">Facebook</a></li>
-                    <li><a href="Twitter.com">Twitter</a></li>
-                    <li><a href="Instagram.com">Instagram</a></li>
-                </ul>
-            </div>
+        <!-- Theme Settings -->
+        <div class="setting">
+            <label for="theme">Theme:</label>
+            <select id="theme" onchange="setTheme(this.value)">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="blue">Blue</option>
+            </select>
         </div>
 
+        <!-- Notifications Settings -->
+        <div class="setting">
+            <label for="notifications">Enable Notifications:</label>
+            <input type="checkbox" id="notifications" onchange="toggleNotifications(this.checked)" checked>
+        </div>
+
+        <!-- Language Settings -->
+        <div class="setting">
+            <label for="language">Language:</label>
+            <select id="language" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+            </select>
+        </div>
+
+        <!-- Profile Visibility Settings -->
+        <div class="setting">
+            <label for="visibility">Profile Visibility:</label>
+            <select id="visibility" onchange="setProfileVisibility(this.value)">
+                <option value="public">Public</option>
+                <option value="private">Private</option>
+            </select>
+        </div>
+
+        <button onclick="closeSettings()">Close Settings</button>
+    </div>
+
+    <footer>
         <div class="footer-bottom">
             <p>&copy; 2024 Library Management System. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        function toggleNav() {
-            var navMenu = document.getElementById("navMenu");
-            navMenu.classList.toggle("open");
-        }
-    </script>
 </body>
 </html>
