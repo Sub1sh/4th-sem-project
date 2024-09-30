@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theme Switcher</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <header>
@@ -20,6 +20,19 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function setTheme(theme) {
+    document.body.className = '';  // Reset all classes
+    document.body.classList.add(`${theme}-theme`);
+    
+    // Apply button styles to match the theme
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.className = '';  // Reset all button classes
+        button.classList.add(`${theme}-theme`);
+    });
+}
+
+    </script>
 </body>
 </html>

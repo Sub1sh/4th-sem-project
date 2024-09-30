@@ -7,6 +7,16 @@
     <link rel="stylesheet" href="setting.css">
 </head>
   <body>
+
+
+    <div class="content">
+        <p>This is a simple theme-changing website!</p>
+        <div class="theme-buttons">
+            <button onclick="setTheme('light')">Light Theme</button>
+            <button onclick="setTheme('dark')">Dark Theme</button>
+            <button onclick="setTheme('blue')">Blue Theme</button>
+        </div>
+    </div>
                <!-- Theme Selection -->
                 <label for="theme">Theme:</label>
                 <select id="theme" name="theme">
@@ -46,7 +56,22 @@
 
             <!-- Submit Button -->
             <button type="submit">Save Settings</button>
+
         </form>
     </div>
+    <script>
+        function setTheme(theme) {
+    document.body.className = '';  // Reset all classes
+    document.body.classList.add(`${theme}-theme`);
+    
+    // Apply button styles to match the theme
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.className = '';  // Reset all button classes
+        button.classList.add(`${theme}-theme`);
+    });
+}
+
+    </script>
 </body>
 </html>
