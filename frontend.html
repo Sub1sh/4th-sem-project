@@ -5,53 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Management Dashboard</title>
     <link rel="stylesheet" href="frontend.css">
-    <script>// Function to toggle the sidebar navigation
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        // Toggle the sidebar navigation
         function toggleNav() {
             var navMenu = document.getElementById("navMenu");
             navMenu.classList.toggle("open");
+            document.body.classList.toggle("sidebar-open");
         }
-        
-        // Function to open the settings panel
+
+        // Open the settings panel
         function openSettings() {
-            document.getElementById("settingsPanel").style.display = "block";
+            document.getElementById("settingsPanel").classList.add("active");
         }
-        
-        // Function to close the settings panel
+
+        // Close the settings panel
         function closeSettings() {
-            document.getElementById("settingsPanel").style.display = "none";
+            document.getElementById("settingsPanel").classList.remove("active");
         }
-        
-        // Function to set the selected theme
+
+        // Set the selected theme
         function setTheme(theme) {
             document.body.className = theme + '-theme';
             alert('Theme set to: ' + theme);
         }
-        
-        // Function to toggle notifications
+
+        // Toggle notifications
         function toggleNotifications(isEnabled) {
-            if (isEnabled) {
-                alert('Notifications enabled');
-            } else {
-                alert('Notifications disabled');
-            }
+            alert(isEnabled ? 'Notifications enabled' : 'Notifications disabled');
         }
-        
-        // Function to change the language (example only, does not actually translate the page)
+
+        // Change language (example only)
         function changeLanguage(language) {
             alert('Language set to: ' + language);
         }
-        
-        // Function to set profile visibility
+
+        // Set profile visibility
         function setProfileVisibility(visibility) {
             alert('Profile visibility set to: ' + visibility);
         }
-        </script>
+
+        // Search functionality (example)
+        function searchBooks() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const books = document.querySelectorAll('.recent-books li');
+            books.forEach(book => {
+                if (book.textContent.toLowerCase().includes(query)) {
+                    book.style.display = 'list-item';
+                } else {
+                    book.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     
     <div class="dashboard">
+        <!-- Sidebar -->
         <div class="sidebar">
-            <button class="open-btn" onclick="toggleNav()">☰</button>
             <div class="nav" id="navMenu">
                 <ul>
                     <li><a href="frontend.html" class="btn"><i class="fas fa-home"></i> <span class="nav-text">Dashboard</span></a></li>
@@ -63,10 +76,22 @@
                 </ul>
             </div>
         </div>
+        
 
+        <!-- Main Content -->
         <div class="content">
-            <h2 class="center-heading">DETAILS OF BOOKS</h2>
+            <!-- Header with Toggle Button and Search Bar -->
+            <header class="header">
+                <button class="menu-btn" onclick="toggleNav()"><i class="fas fa-bars"></i></button>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search books..." onkeyup="searchBooks()">
+                    <button onclick="searchBooks()"><i class="fas fa-search"></i></button>
+                </div>
+            </header>
+
+            <h2 class="center-heading">Book Management Dashboard</h2>
             <main class="main-content">
+                <!-- Statistics Section -->
                 <section class="stats">
                     <div class="stat-card">
                         <h3>Total Books</h3>
@@ -85,15 +110,17 @@
                         <p>50</p>
                     </div>
                 </section>
+
+                <!-- Recently Added Books Section -->
                 <section class="recent-books">
                     <h2>Recently Added Books</h2>
                     <ol class="list">
-                        <li>"The Great Gatsby" by F. Scott Fitzgerald</li><br>
-                        <li>"To Kill a Mockingbird" by Harper Lee</li><br>
-                        <li>"1984" by George Orwell</li><br>
-                        <li>"Pride and Prejudice" by Jane Austen</li><br>
-                        <li>"Moby-Dick" by Herman Melville</li><br>
-                        <li>"The Catcher in the Rye" by J.D. Salinger</li><br>
+                        <li>"The Great Gatsby" by F. Scott Fitzgerald</li>
+                        <li>"To Kill a Mockingbird" by Harper Lee</li>
+                        <li>"1984" by George Orwell</li>
+                        <li>"Pride and Prejudice" by Jane Austen</li>
+                        <li>"Moby-Dick" by Herman Melville</li>
+                        <li>"The Catcher in the Rye" by J.D. Salinger</li>
                         <li>"The Hobbit" by J.R.R. Tolkien</li>
                     </ol>
                 </section>
@@ -101,6 +128,7 @@
         </div>
     </div>
 
+    <!-- Settings Panel -->
     <div id="settingsPanel" class="settings-panel">
         <h2>Settings</h2>
 
@@ -143,10 +171,12 @@
         <button onclick="closeSettings()">Close Settings</button>
     </div>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-bottom">
             <p>&copy; 2024 Library Management System. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 </html>

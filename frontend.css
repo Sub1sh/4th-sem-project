@@ -1,10 +1,33 @@
-/* General Styles */
-body, html {
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+body, html {
     height: 100%;
     width: 100%;
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light Theme */
+.light-theme {
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Dark Theme */
+.dark-theme {
+    background-color: #1e1e1e;
+    color: #f0f2f5;
+}
+
+/* Blue Theme */
+.blue-theme {
+    background-color: #e3f2fd;
+    color: #0d47a1;
 }
 
 /* Dashboard Layout */
@@ -12,72 +35,200 @@ body, html {
     display: flex;
     height: 100vh;
     width: 100%;
-    background-image: url('./book1.img');
+    background-image: url('./book1.img'); /* Ensure this path is correct */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: background-color 0.3s;
 }
 
 /* Sidebar Styles */
 .sidebar {
-    width: 60px;
-    background-color: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px; /* Default width */
+    background-color: rgba(0, 0, 0, 0.7);
     transition: width 0.3s;
     overflow: hidden;
+    z-index: 1000;
 }
 
+/* When the user hovers over the sidebar */
 .sidebar:hover {
     width: 250px;
 }
 
-.nav-text {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+.sidebar .nav ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.sidebar:hover .nav-text {
-    display: inline;
-    opacity: 1;
-    margin-left: 10px;
+.sidebar .nav ul li {
+    margin: 10px 0;
 }
 
-.nav a {
-    color: #ecf0f1;
-    text-decoration: none;
-    padding: 15px;
+.sidebar .nav ul li a {
     display: flex;
     align-items: center;
     font-size: 16px;
-    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
     transition: background-color 0.3s;
 }
 
-.nav a i {
+.sidebar .nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav ul li a i {
     font-size: 24px;
+    margin-right: 10px;
+    width: 30px;
+    text-align: center;
+    color: #e3a034;
 }
 
-.nav a:hover {
-    background-color: #e3a034;
+.sidebar .nav ul li a .nav-text {
+    opacity: 0; /* Hidden by default */
+    white-space: nowrap;
+    transition: opacity 0.3s, margin-left 0.3s;
+    margin-left: -10px; /* Positioned closer to the icon */
+    color: #fff;
 }
 
+/* When hovering over the sidebar, reveal the nav text */
+.sidebar:hover .nav ul li a .nav-text {
+    opacity: 1;
+    margin-left: 10px; /* Create space for the text to appear naturally */
+}
+
+.sidebar .nav ul li a .nav-text {
+    display: inline-block;
+    vertical-align: middle;
+    color: #fff;
+}
+
+/* Content Styles */
 .content {
+    margin-left: 60px;
     flex: 1;
     padding: 20px;
-    color: white;
     overflow-y: auto;
+    transition: margin-left 0.3s;
+}
+
+.sidebar.open ~ .content {
+    margin-left: 250px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    width: 250px;
+    transition: width 0.3s;
+}
+
+.search-bar input:focus {
+    width: 300px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #e3a034;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #cf850c;
 }
 
 .center-heading {
     text-align: center;
-    font-size: 36px;
+    font-size: 32px;
     margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .main-content {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
+    color: #333;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: #fff;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+.stat-card h3 {
+    margin-bottom: 10px;
+    color: #e3a034;
+}
+
+.recent-books {
+    margin-top: 20px;
+}
+
+.recent-books h2 {
+    margin-bottom: 15px;
+    color: #e3a034;
+}
+
+.recent-books .list {
+    list-style: decimal inside;
+    line-height: 1.8;
+}
+
+.recent-books .list li {
+    padding: 5px 0;
+    transition: background-color 0.3s;
+}
+
+.recent-books .list li:hover {
+    background-color: #f0e68c;
+    border-radius: 4px;
 }
 
 /* Settings Panel */
@@ -85,45 +236,90 @@ body, html {
     display: none;
     position: fixed;
     top: 0;
-    right: 0;
-    background-color:none;
+    right: -350px;
+    background-color: rgba(0, 0, 0, 0.85);
     width: 300px;
     height: 100%;
     padding: 20px;
-    color: white;
-    box-shadow: -3px 0 15px rgba(0,0,0,0.2);
+    color: #f0f2f5;
+    box-shadow: -3px 0 15px rgba(0,0,0,0.3);
+    transition: right 0.3s;
+    z-index: 2000;
+}
+
+.settings-panel.active {
+    display: block;
+    right: 0;
 }
 
 .settings-panel h2 {
-    color: blanchedalmond;
+    margin-bottom: 20px;
+    color: #e3a034;
+    text-align: center;
 }
 
 .setting {
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .setting label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    font-weight: bold;
 }
 
-.setting select, .setting input {
+.setting select, .setting input[type="checkbox"] {
     padding: 8px;
     width: 100%;
-    border-radius: 5px;
+    border-radius: 4px;
     border: none;
 }
 
-button {
-    background-color: burlywood;
+.setting input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+}
+
+.settings-panel button {
+    background-color: #e3a034;
     border: none;
     padding: 10px;
     cursor: pointer;
     width: 100%;
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color:red;
+.settings-panel button:hover {
+    background-color: #cf850c;
+}
+
+/* Footer */
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar input {
+        width: 150px;
+    }
 }
