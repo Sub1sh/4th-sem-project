@@ -57,4 +57,4 @@ function updateCart() {
 }
 
 // Initialize the book list on page load
-displayBooks();
+ displayBooks();
