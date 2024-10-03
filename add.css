@@ -1,90 +1,115 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    background-color: #f0f2f5;
 }
 
 header {
-    background-color: #4CAF50;
+    background-color: #003f5c;
     color: white;
-    padding: 10px 0;
     text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.book-list-container {
+    flex: 3;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
 }
 
 .book-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
 }
 
 .book {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 15px;
-    margin: 10px;
-    width: 200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     text-align: center;
 }
 
+.book:hover {
+    transform: translateY(-5px);
+}
+
 .book h3 {
-    font-size: 18px;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 .book p {
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: #555;
 }
 
 .book button {
-    background-color: #4CAF50;
+    background-color: #003f5c;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
 }
 
 .book button:hover {
-    background-color: #45a049;
+    background-color: #005f7c;
 }
 
 .cart {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    width: 250px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #212121;
+    color: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: fixed;
-    top: 80px;
+    top: 100px;
     right: 20px;
 }
 
 .cart h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 #cart-items {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     margin: 0;
+    font-size: 1rem;
 }
 
 #cart-items li {
-    background-color: #f4f4f4;
+    background-color: #333;
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
 }
 
 #total-books {
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 1.1rem;
+    margin-top: 20px;
     font-weight: bold;
+    text-align: center;
 }
