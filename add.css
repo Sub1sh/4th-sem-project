@@ -6,7 +6,7 @@ body {
 }
 
 header {
-    background-color: #003f5c;
+    background-color:burlywood;
     color: white;
     text-align: center;
     padding: 20px;
@@ -63,7 +63,7 @@ h2 {
 }
 
 .book button {
-    background-color: #003f5c;
+    background-color:burlywood;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -74,11 +74,11 @@ h2 {
 }
 
 .book button:hover {
-    background-color: #005f7c;
+    background-color: #48f613;
 }
 
 .cart {
-    background-color: #212121;
+    background-color:silver;
     color: white;
     padding: 20px;
     width: 300px;
