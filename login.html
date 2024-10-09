@@ -18,11 +18,35 @@
                 window.location.href = 'frontend.html'; // Navigate to frontend page if validation passes
             }
         }
+
+        function showSignUp() {
+            document.getElementById("login-box").style.display = "none";
+            document.getElementById("signup-box").style.display = "block";
+        }
+
+        function validateSignUp(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            const username = document.getElementById("signup-username").value;
+            const password = document.getElementById("signup-password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            if (username === "" || password === "" || confirmPassword === "") {
+                alert("Please fill in all fields.");
+            } else if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+            } else {
+                alert("Sign up successful! Redirecting to login page...");
+                document.getElementById("login-box").style.display = "block";
+                document.getElementById("signup-box").style.display = "none";
+            }
+        }
     </script>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-box">
+        <!-- Login Section -->
+        <div class="login-box" id="login-box">
             <h2>Login</h2>
             <form onsubmit="validateForm(event)">
                 <div class="input-group">
@@ -35,6 +59,28 @@
                 </div>
                 <button type="submit" class="login-btn">Next</button>
             </form>
+            <p>New user? <a href="#" onclick="showSignUp()">Sign Up</a></p>
+        </div>
+
+        <!-- Sign Up Section (Initially Hidden) -->
+        <div class="signup-box" id="signup-box" style="display: none;">
+            <h2>Sign Up</h2>
+            <form onsubmit="validateSignUp(event)">
+                <div class="input-group">
+                    <label for="signup-username">Username</label>
+                    <input type="text" id="signup-username" name="signup-username" required>
+                </div>
+                <div class="input-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" name="signup-password" required>
+                </div>
+                <div class="input-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                </div>
+                <button type="submit" class="signup-btn">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="#" onclick="document.getElementById('login-box').style.display='block'; document.getElementById('signup-box').style.display='none';">Login</a></p>
         </div>
     </div>
 </body>
