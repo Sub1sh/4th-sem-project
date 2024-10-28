@@ -402,3 +402,8 @@ footer {
         margin: 5px 0;
     }
 }
+
+p {
+    border-inline: 100px solid #ccc; /* Sets both left and right borders */
+    padding-inline: 10px; /* Adds padding on both sides */
+}
